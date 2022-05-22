@@ -8,7 +8,7 @@ package com.salesforce.emp.connector.example;
 
 import static com.salesforce.emp.connector.LoginHelper.login;
 
-import java.net.URL;
+// import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,7 +18,7 @@ import org.eclipse.jetty.util.ajax.JSON;
 
 import com.salesforce.emp.connector.BayeuxParameters;
 import com.salesforce.emp.connector.EmpConnector;
-import com.salesforce.emp.connector.LoginHelper;
+// import com.salesforce.emp.connector.LoginHelper;
 import com.salesforce.emp.connector.TopicSubscription;
 
 /**

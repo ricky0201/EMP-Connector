@@ -13,8 +13,8 @@ import org.cometd.client.BayeuxClient;
 import org.cometd.client.transport.LongPollingTransport;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.Request;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 
 import java.net.ConnectException;
 import java.util.Map;
@@ -106,7 +106,7 @@ public class EmpConnector {
     public static long REPLAY_FROM_TIP = -1L;
 
     private static String AUTHORIZATION = "Authorization";
-    private static final Logger log = LoggerFactory.getLogger(EmpConnector.class);
+    // private static final Logger log = LoggerFactory.getLogger(EmpConnector.class);
 
     private volatile BayeuxClient client;
     private final HttpClient httpClient;
@@ -150,7 +150,7 @@ public class EmpConnector {
             return;
         }
         if (client != null) {
-            log.info("Disconnecting Bayeux Client in EmpConnector");
+            // log.info("Disconnecting Bayeux Client in EmpConnector");
             client.disconnect();
             client = null;
         }
@@ -163,10 +163,10 @@ public class EmpConnector {
         disconnect();
         if (httpClient != null) {
             try {
-                log.info("Stopping the http client!");
+                // log.info("Stopping the http client!");
                 httpClient.stop();
             } catch (Exception e) {
-                log.error("Unable to stop HTTP transport[{}]", parameters.endpoint(), e);
+                // log.error("Unable to stop HTTP transport[{}]", parameters.endpoint(), e);
             }
         }
     }
@@ -279,7 +279,7 @@ public class EmpConnector {
     }
 
     private Future<Boolean> connect() {
-        log.info("EmpConnector connecting");
+        // log.info("EmpConnector connecting");
         CompletableFuture<Boolean> future = new CompletableFuture<>();
 
         try {
@@ -287,7 +287,7 @@ public class EmpConnector {
                 httpClient.start();
             }
         } catch (Exception e) {
-            log.error("Unable to start HTTP transport[{}]", parameters.endpoint(), e);
+            // log.error("Unable to start HTTP transport[{}]", parameters.endpoint(), e);
             running.set(false);
             future.complete(false);
             return future;
@@ -348,7 +348,7 @@ public class EmpConnector {
         if (running.compareAndSet(false, true)) {
             connect();
         } else {
-            log.error("The current value of running is not as we expect, this means our reconnection may not happen");
+            // log.error("The current value of running is not as we expect, this means our reconnection may not happen");
         }
     }
 
